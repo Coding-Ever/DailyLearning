@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: qzy970105
+    url: jdbc:mysql://localhost:3306/Moudel?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+  redis:
+    host: 127.0.0.1
+    database: 0
+    port: 6379
+    password: qzy970105
+  cache:
+    cache-names: menus_cache
+server:
+  port: 8081
+  compression:
+    enabled: true

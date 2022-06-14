@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!--使用 Hibernate 自带的连接池配置-->
+        <property name="connection.url">jdbc:mysql://localhost:3306/springdata?characterEncoding=UTF-8</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">qzy970105</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+
+        <!--允许显示SQL语句-->
+        <!--会在日志中记录SQL语句，默认为false-->
+        <property name="show_sql">true</property>
+        <!--是否格式化SQL，默认为false-->
+        <property name="format_sql">true</property>
+        <!--表的生成策略，默认为none，不会自动生成
+                        update 如果没有表会创建，有会检查更新
+                        create 每次运行都会创建表-->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <!--hibernate 方言-->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+
+        <!--打印sql语句-->
+        <property name="hibernate.show_sql">true</property>
+        <!--格式化sql-->
+        <property name="hibernate.format_sql">true</property>
+
+        <!-- 加载映射文件 -->
+        <!--指定哪些POJO需要ORM映射-->
+        <mapping class="com.ever.pojo.Customer"/>
+    </session-factory>
+</hibernate-configuration>

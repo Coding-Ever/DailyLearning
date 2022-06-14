@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+
+    <!-- Name属性用于定义持久化单元的名字 (name必选,空值也合法); transaction-type 指定事务类型(可选)-->
+    <!--以下是HibernateJPA的持久化单元-->
+    <persistence-unit name="hibernateJPA" transaction-type="RESOURCE_LOCAL">
+        <!-- jpa的实现方式 -->
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <!-- 需要进行ORM的POJO类 -->
+        <class>com.ever.pojo.Customer</class>
+
+        <!--可选配置：配置jpa实现方的配置信息-->
+        <properties>
+            <!--数据可信息
+                用户名，    javax.persistence.jdbc.user
+                密码，      javax.persistence.jdbc.password
+                驱动，      javax.persistence.jdbc.driver
+                数据库地址， javax.persistence.jdbc.url-->
+            <property name = "javax.persistence.jdbc.user" value="root"/>
+            <property name = "javax.persistence.jdbc.password" value="qzy970105"/>
+            <property name = "javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name = "javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/springdata?characterEncoding=UTF-8"/>
+
+            <!--配置JPA实现方（hibernate）的配置信息
+                    显示SQL：          false/true
+                    自动创建数据表：     hibernate.hbm2ddl.auto
+                            create:   程序运行时创建数据表（如果有表，先删除再创建）
+                            update:   程序运行时创建表（如果有表，不会创建）
+                            none:     不会创建表-->
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true"/>
+        </properties>
+    </persistence-unit>
+
+    <!--以下是OpenJPA的持久化配置单元-->
+    <persistence-unit name="openJPA" transaction-type="RESOURCE_LOCAL">
+        <!-- jpa的实现方式 -->
+        <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+        <!-- 需要进行ORM的POJO类 -->
+        <class>com.ever.pojo.Customer</class>
+
+        <!--可选配置：配置jpa实现方的配置信息-->
+        <properties>
+            <!--数据可信息
+                用户名，    javax.persistence.jdbc.user
+                密码，      javax.persistence.jdbc.password
+                驱动，      javax.persistence.jdbc.driver
+                数据库地址， javax.persistence.jdbc.url-->
+            <property name = "javax.persistence.jdbc.user" value="root"/>
+            <property name = "javax.persistence.jdbc.password" value="qzy970105"/>
+            <property name = "javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name = "javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/springdata?characterEncoding=UTF-8"/>
+
+            <!--配置JPA实现方（openjpa）的配置信息-->
+            <!--可以自动生成数据库表-->
+            <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)" />
+            <property name="openjpa.Log" value="SQL=TRACE" />
+        </properties>
+    </persistence-unit>
+</persistence>
